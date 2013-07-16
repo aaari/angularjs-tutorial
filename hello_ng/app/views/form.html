@@ -1,0 +1,34 @@
+<h3>Formのテスト</h3>
+<div ng-controller="FormCtrl">
+  <form name="myForm">
+    <label>Name:</label>
+    <input type="text" ng-model="form.name" required>
+
+    <label>Address:</label>
+    <input type="text" ng-model="form.address.zip" size="8" ng-pattern="zip" required><br>
+    <input type="text" ng-model="form.address.state" size="12" required>
+    <input type="text" ng-model="form.address.city" size="12" required>
+    <input type="text" ng-model="form.address.line1" size="33" required><br>
+
+    <label>Phone:</label>
+    [<a href="" ng-click="addContact()">add</a>]
+    <div ng-repeat="contact in form.contacts">
+      <select ng-model="contact.type">
+        <option>email</option>
+        <option>phone</option>
+        <option>pager</option>
+        <option>IM</option>
+      </select>
+      <input type="text" ng-model="contact.value" required>
+      [<a href="" ng-click="removeContact(contact)">x</a>]
+    </div>
+    <button ng-click="cancel()" ng-disabled="isCancelDisabled()">Cancel</button>
+    <button ng-click="save()" ng-disabled="isSaveDisabled()">Save</button>
+  </form>
+  <hr />
+  Debug view:
+  <pre>form={{form}}</pre>
+  <pre>user={{form | json}}</pre>
+
+</div>
+<a href="#/">トップへ戻る</a>
